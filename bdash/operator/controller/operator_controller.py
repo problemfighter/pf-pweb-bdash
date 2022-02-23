@@ -3,9 +3,9 @@ from flask import Blueprint, render_template
 url_prefix = "/operator"
 operator_controller = Blueprint(
     "bdash_operator", __name__, url_prefix=url_prefix,
-    template_folder="../bdash-html",
+    template_folder="../../bdash-html",
     static_url_path="bdash",
-    static_folder="../bdash-static",
+    static_folder="../../bdash-static",
 )
 
 

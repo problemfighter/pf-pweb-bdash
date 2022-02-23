@@ -1,6 +1,6 @@
-from bdash.controller.bdash_controller import bdash_controller
-from bdash.controller.operator_controller import operator_controller
+from bdash.dashboard.controller.bdash_controller import bdash_controller
 from bdash.jinja.pweb_jinja_registry import registry
+from bdash.operator.controller.operator_controller import operator_controller
 from pf_flask_web.system12.pweb_interfaces import PWebAppRegistry
 
 
