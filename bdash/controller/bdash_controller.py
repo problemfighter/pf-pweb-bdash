@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 url_prefix = "/"
 bdash_controller = Blueprint(
@@ -9,4 +9,4 @@ bdash_controller = Blueprint(
 
 @bdash_controller.route("/dashboard")
 def dashboard():
-    return "Dashboard"
+    return render_template("bdash/dashboard.html")
