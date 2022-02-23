@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}PWeb{% endblock %}</title>
     {% include 'bdash/layout/includes/static.html' %}
     {% block head %}{% endblock %}
-    </head>
+</head>
 <body>
 
+{% include 'bdash/layout/includes/header.html' %}
 <div class="container-fluid">
     <div class="row">
         {% include 'bdash/layout/includes/left-nav.html' %}
