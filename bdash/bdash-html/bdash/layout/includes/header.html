@@ -4,13 +4,15 @@
     </a>
     <div class="dropdown dropdown-menu-end">
         <button type="button" class="btn  btn-dark dropdown-toggle pf-btn-profile btn-align" data-bs-toggle="dropdown">
-          Touhid
+          {{ loggedin_operator_name() }}
         </button>
         <ul class="dropdown-menu drop-content">
-            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Setting</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt me-2"></i>User login</a></li>
-            <hr class="spaceing">
-            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout </a></li>
+            <li>
+                <a class="dropdown-item" href="{{ url_for('operator_form_controller.logout') }}">
+                    <i class="fas fa-sign-out-alt me-2"></i>
+                    Logout
+                </a>
+            </li>
         </ul>
     </div>
 
