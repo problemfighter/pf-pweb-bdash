@@ -1,4 +1,5 @@
 from bdash.controller.bdash_controller import bdash_controller
+from bdash.controller.operator_controller import operator_controller
 from bdash.jinja.pweb_jinja_registry import registry
 from pf_flask_web.system12.pweb_interfaces import PWebAppRegistry
 
@@ -13,6 +14,7 @@ class BDashRegistry(PWebAppRegistry):
 
     def register_controller(self, pweb_app):
         pweb_app.register_blueprint(bdash_controller)
+        pweb_app.register_blueprint(operator_controller)
 
     def _register_jinja_functions(self, pweb_app):
         if pweb_app and pweb_app.jinja_env and pweb_app.jinja_env.globals:
