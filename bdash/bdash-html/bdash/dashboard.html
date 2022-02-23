@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>BDash</title>
-</head>
-<body>
+{% extends "bdash/layout/base-layout.html" %}
+{% block title %}Dashboard{% endblock %}
 
- <h1>Dashboard</h1>
-
-</body>
-</html>
+{% block content %}
+    <h1>Index</h1>
+    <p class="important">
+      Welcome to my awesome homepage.
+    </p>
+{% endblock %}
