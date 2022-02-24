@@ -12,15 +12,28 @@
     </label>
 {% endif %}
 
-<input
-        type="{{ conf.field.inputType }}"
-        name="{{ conf.field.name }}"
-        value="{{ conf.field.value }}"
-        {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
 
-        class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
-        {{ conf.field.inputAttr }}
->
+{% if conf.field.inputType == "textarea" %}
+    <textarea
+            name="{{ conf.field.name }}"
+            {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
+            class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
+            {{ conf.field.inputAttr }}
+    >{{ conf.field.value }}</textarea>
+{% else %}
+    <input
+            type="{{ conf.field.inputType }}"
+            name="{{ conf.field.name }}"
+            value="{{ conf.field.value }}"
+            {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
+
+            class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
+            {{ conf.field.inputAttr }}
+    >
+{% endif %}
+
+
+
 
 {% if conf.field.errors %}
     <div class="invalid-feedback">

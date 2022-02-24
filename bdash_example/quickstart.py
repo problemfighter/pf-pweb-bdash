@@ -23,6 +23,9 @@ class PersonForm(FormAppDef):
     age = fields.Integer(required=True, error_messages={"required": "Please enter age"})
     income = fields.Float(allow_none=True)
 
+    password = fields.String(required=True, error_messages={"required": "Please enter password"}, type="password")
+    description = fields.String(required=True, error_messages={"required": "Please enter description"}, type="textarea")
+
 
 @bdash_example_blueprint.route("/")
 @bdash_example_blueprint.route("/form-example", methods=['POST', 'GET'])
