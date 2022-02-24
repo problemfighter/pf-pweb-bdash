@@ -17,9 +17,41 @@ class PWebForm:
             return html_file.read()
         return ""
 
-    def show_input(self, field: FieldData, **kwargs):
+    def _get_wrapper_class(self, klass="", **kwargs):
+        if not klass:
+            klass = ""
+        custom = kwargs.get("class")
+        if custom:
+            klass = " " + custom
+        klass = klass.strip()
+        if klass and klass != "":
+            return 'class="' + klass + '"'
+        return ""
+
+    def _process_field_data(self, field: FieldData):
+        if field.default and (field.value == "" or not field.value):
+            field.value = field.default
+
+        if not field.inputType and field.dataType:
+            data_type = field.dataType
+            if data_type == "String":
+                field.inputType = "text"
+            elif data_type == "Email":
+                field.inputType = "email"
+
+        return field
+
+    def show_input(self, field: FieldData, wrapper=True, **kwargs):
         template = self.get_template("text-input")
-        return render_template_string(template)
+        field = self._process_field_data(field)
+        print(field.dataType)
+        wrapper_klass = self._get_wrapper_class(field.topAttrClass, **kwargs)
+        data = {
+            "wrapperKlass": wrapper_klass,
+            "wrapper": wrapper,
+            "field": field,
+        }
+        return render_template_string(template, conf=data)
 
 
 pweb_form = PWebForm()

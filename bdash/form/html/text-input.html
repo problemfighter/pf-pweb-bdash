@@ -1,2 +1,23 @@
 
-<input type="text" />
+{% if conf.wrapper %}
+    <div {{ conf.wrapperKlass |safe }} {{ conf.field.topAttr | safe }}>
+{% endif %}
+
+{% if conf.field.label %}
+    <label class="form-label">{{ conf.field.label }}</label>
+{% endif %}
+
+<input
+        type="{{ conf.field.inputType }}"
+        name="{{ conf.field.name }}"
+        value="{{ conf.field.value }}"
+        {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
+
+        class="form-control {{ conf.field.inputAttrClass }}"
+        {{ conf.field.inputAttr }}
+>
+
+
+{% if conf.wrapper %}
+    </div>
+{% endif %}
