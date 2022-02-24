@@ -20,6 +20,14 @@
             class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
             {{ conf.field.inputAttr }}
     >{{ conf.field.value }}</textarea>
+{%- elif conf.field.inputType == "select" %}
+    <select
+            name="{{ conf.field.name }}"
+            class="form-select {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
+            {{ conf.field.inputAttr }}
+    >
+
+    </select>
 {% else %}
     <input
             type="{{ conf.field.inputType }}"

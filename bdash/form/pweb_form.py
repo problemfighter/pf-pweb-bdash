@@ -43,15 +43,20 @@ class PWebForm:
 
         return field
 
+    def _get_select_options(self, field: FieldData):
+        options = []
+        return options
+
     def show_input(self, field: FieldData, wrapper=True, **kwargs):
         template = self.get_template("text-input")
         field = self._process_field_data(field)
-        print(field.dataType)
         wrapper_klass = self._get_wrapper_class(field.topAttrClass, **kwargs)
+        options = self._get_select_options(field)
         data = {
             "wrapperKlass": wrapper_klass,
             "wrapper": wrapper,
             "field": field,
+            "options": options,
         }
         return render_template_string(template, conf=data)
 
