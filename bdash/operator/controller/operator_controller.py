@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template
-
-from bdash.form.pweb_form import pweb_form
+from bdash.operator.dto.operator_form import OperatorForm
 
 url_prefix = "/operator"
 operator_controller = Blueprint(
@@ -20,5 +19,5 @@ def list():
 
 @operator_controller.route("/create", methods=['POST', 'GET'])
 def create():
-    data_list = []
-    return render_template("bdash/operator/create.html", data_list=data_list)
+    form = OperatorForm()
+    return render_template("bdash/operator/create.html", form=form.definition)
