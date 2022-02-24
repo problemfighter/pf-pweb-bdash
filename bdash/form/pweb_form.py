@@ -55,5 +55,17 @@ class PWebForm:
         }
         return render_template_string(template, conf=data)
 
+    def show_error_message(self, field: FieldData):
+        template = self.get_template("error-message")
+        data = {
+            "field": field,
+        }
+        return render_template_string(template, conf=data)
+
+    def add_error_class(self, field: FieldData):
+        if field.has_error:
+            return
+        return "is-invalid"
+
 
 pweb_form = PWebForm()
