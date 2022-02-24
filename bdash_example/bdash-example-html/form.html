@@ -14,10 +14,12 @@
         <div class="card-body">
             <form class="row g-3" method="post" action="{{ url_for("bdash_exp.form_example") }}">
 
-                {% show_input field=form.firstName %}
-                {% show_input field=form.lastName %}
-                {% show_input field=form.email %}
-                {% show_input field=form.password %}
+                {% show_input field=form.firstName, class="col-6"%}
+                {% show_input field=form.lastName, class="col-6" %}
+                {% show_input field=form.email, class="col-6" %}
+                {% show_input field=form.password, class="col-6" %}
+                {% show_input field=form.income, class="col-6" %}
+                {% show_input field=form.age, class="col-6" %}
                 {% show_input field=form.description %}
 
 
