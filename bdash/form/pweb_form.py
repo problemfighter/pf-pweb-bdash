@@ -34,10 +34,12 @@ class PWebForm:
 
         if not field.inputType and field.dataType:
             data_type = field.dataType
-            if data_type == "String":
-                field.inputType = "text"
+            if data_type == "Integer" or data_type == "Float" or data_type == "Decimal":
+                field.inputType = "number"
             elif data_type == "Email":
                 field.inputType = "email"
+            else:
+                field.inputType = "text"
 
         return field
 

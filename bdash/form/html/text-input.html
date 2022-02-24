@@ -4,7 +4,12 @@
 {% endif %}
 
 {% if conf.field.label %}
-    <label class="form-label">{{ conf.field.label }}</label>
+    <label class="form-label">
+        {% if conf.field.required %}
+            <span class="text-danger me-1">*</span>
+        {% endif %}
+        {{ conf.field.label }}
+    </label>
 {% endif %}
 
 <input
@@ -13,9 +18,20 @@
         value="{{ conf.field.value }}"
         {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
 
-        class="form-control {{ conf.field.inputAttrClass }}"
+        class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
         {{ conf.field.inputAttr }}
 >
+
+{% if conf.field.errors %}
+    <div class="invalid-feedback">
+        {{- conf.field.errors }}
+    </div>
+{%- elif conf.field.helpText %}
+    <div class="form-text">
+        {{- conf.field.helpText }}
+    </div>
+{% endif %}
+
 
 
 {% if conf.wrapper %}

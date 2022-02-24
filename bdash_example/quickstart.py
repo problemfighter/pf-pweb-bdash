@@ -18,14 +18,14 @@ class PersonForm(FormAppDef):
         label="First Name",
         topAttr={"id": "a b c", "class": "asd"},
     )
-    lastName = fields.String(allow_none=True, default="NA")
+    lastName = fields.String(allow_none=True, default="NA", helpText="Optional Data")
     email = fields.Email(required=True, error_messages={"required": "Please enter email"})
     age = fields.Integer(required=True, error_messages={"required": "Please enter age"})
     income = fields.Float(allow_none=True)
 
 
 @bdash_example_blueprint.route("/")
-@bdash_example_blueprint.route("/form-example")
+@bdash_example_blueprint.route("/form-example", methods=['POST', 'GET'])
 def form_example():
     form = PersonForm()
     if form.is_post_request() and form.is_valid_data():
