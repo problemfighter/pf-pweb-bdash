@@ -1,21 +1,10 @@
-import codecs
-import os.path
-import pathlib
 from flask import render_template_string
+from bdash.form.pweb_form_common import PWebFormCommon
 from pf_flask_rest.form.common.pffr_field_data import FieldData
 
 
 class PWebForm:
-
-    def get_own_path(self):
-        return pathlib.Path(__file__).parent.resolve()
-
-    def get_template(self, template_name):
-        path = os.path.join(self.get_own_path(), "html", template_name + ".html")
-        if os.path.exists(path):
-            html_file = codecs.open(path, 'r', 'utf-8')
-            return html_file.read()
-        return ""
+    pweb_form_common = PWebFormCommon()
 
     def _get_wrapper_class(self, klass="", **kwargs):
         if not klass:
@@ -60,7 +49,7 @@ class PWebForm:
         return options
 
     def show_input(self, field: FieldData, wrapper=True, **kwargs):
-        template = self.get_template("text-input")
+        template = self.pweb_form_common.get_template("text-input")
         field = self._process_field_data(field)
         wrapper_klass = self._get_wrapper_class(field.topAttrClass, **kwargs)
         options = self._get_select_options(field)
@@ -73,7 +62,7 @@ class PWebForm:
         return render_template_string(template, conf=data)
 
     def show_error_message(self, field: FieldData):
-        template = self.get_template("error-message")
+        template = self.pweb_form_common.get_template("error-message")
         data = {
             "field": field,
         }

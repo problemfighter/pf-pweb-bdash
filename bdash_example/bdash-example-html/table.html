@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <link rel="stylesheet" href="{{ url_for('bdash.static', filename='css/libs/bootstrap-5.0.2.min.css') }}">
+    <script src="{{ url_for('bdash.static', filename='js/libs/bootstrap-5.0.2.bundle.min.js') }}"></script>
+    <script src="{{ url_for('bdash.static', filename='js/libs/font-awesome-5.15.4.min.js') }}"></script>
+</head>
+<body>
+
+<div class="contain p-5">
+    <h1 class="mb-2">Registration Form</h1>
+    <div class="amin-table">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th># SL</th>
+            {% sortable_header name="firstName" %}
+            <th>Header</th>
+            <th>Header</th>
+            {% sortable_header name="lastName" %}
+            <th class="text-center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1,001</td>
+            <td>Bangladesh</td>
+            <td>Bang</td>
+            <td>Chitagong</td>
+            <td>sit</td>
+            <td class="text-center">
+                <div class="dropdown">
+                    <a class="btn-sm" data-bs-toggle="dropdown">
+                        <i class="fas fa-ellipsis-v text-dark"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1,002</td>
+            <td>amet</td>
+            <td>consectetur</td>
+            <td>adipiscing</td>
+            <td>elit</td>
+            <td class="text-center">
+                <div class="dropdown">
+                    <a class="btn-sm" data-bs-toggle="dropdown">
+                        <i class="fas fa-ellipsis-v text-dark"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1,003</td>
+            <td>Integer</td>
+            <td>nec</td>
+            <td>odio</td>
+            <td>Praesent</td>
+            <td class="text-center">
+                <div class="dropdown">
+                    <a class="btn-sm" data-bs-toggle="dropdown">
+                        <i class="fas fa-ellipsis-v text-dark"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1,003</td>
+            <td>libero</td>
+            <td>Sed</td>
+            <td>cursus</td>
+            <td>ante</td>
+            <td class="text-center">
+                <div class="dropdown">
+                    <a class="btn-sm" data-bs-toggle="dropdown">
+                        <i class="fas fa-ellipsis-v text-dark"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
+                        <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="justify-content-end">
+    <div class="row justify-content-end">
+        <div class="col-auto">
+            <select class="form-select form-select-sm">
+                <option selected value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <nav>
+                <ul class="pagination pagination-sm">
+                    <li class="page-item pagination-selector">
+                        <a class="page-link pagination-link bg-secondary text-white" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                    </li>
+                    <li class="page-item border-0 active"><a class="page-link pagination-link" href="#">1</a></li>
+                    <li class="page-item "><a class="page-link pagination-link" href="#">2</a></li>
+                    <li class="page-item "><a class="page-link pagination-link" href="#">3</a></li>
+                    <li class="page-item pagination-selector"><a class="page-link bg-secondary text-white pagination-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+

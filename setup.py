@@ -14,7 +14,7 @@ def get_dependencies():
     if env and env == "dev":
         return dependency
 
-    return dependency + ["PF-Flask-Web", "PF-Flask-Auth"]
+    return dependency + ["PF-Flask-Web", "PF-Flask-Auth", "PF-Flask-Rest-Com"]
 
 
 setup(

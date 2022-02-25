@@ -9,4 +9,5 @@ extensions = [
     "bdash.form.tags.tag_definitions.ShowInput",
     "bdash.form.tags.tag_definitions.ShowErrorMessage",
     "bdash.form.tags.tag_definitions.AddErrorClass",
+    "bdash.form.tags.tag_definitions.SortableHeader",
 ]

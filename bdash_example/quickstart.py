@@ -41,3 +41,8 @@ def form_example():
     if form.is_post_request() and form.is_valid_data():
         return "Data is valid"
     return render_template("form.html", form=form.definition)
+
+
+@bdash_example_blueprint.route("/table")
+def table():
+    return render_template("table.html")

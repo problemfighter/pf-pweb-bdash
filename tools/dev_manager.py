@@ -85,6 +85,7 @@ source_projects = {
     "repositories": {
         "pf-flask-auth": "https://github.com/problemfighter/pf-flask-auth.git",
         "pf-flask-rest": "https://github.com/problemfighter/pf-flask-rest.git",
+        "pf-flask-rest-com": "https://github.com/problemfighter/pf-flask-rest-com.git",
     }
 }
 

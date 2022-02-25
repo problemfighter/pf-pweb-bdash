@@ -1,5 +1,6 @@
 from bdash.form.lib.jinja2_tag_helper import StandaloneTag
 from bdash.form.pweb_form import pweb_form
+from bdash.form.pweb_table import pweb_table
 
 
 class ShowInput(StandaloneTag):
@@ -22,3 +23,9 @@ class AddErrorClass(StandaloneTag):
     def render(self, field, *args, **kwargs):
         return pweb_form.add_error_class(field, **kwargs)
 
+
+class SortableHeader(StandaloneTag):
+    tags = {"sortable_header"}
+
+    def render(self, name, *args, **kwargs):
+        return pweb_table.sortable_header(name, **kwargs)
