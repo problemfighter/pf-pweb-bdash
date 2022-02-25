@@ -23,10 +23,15 @@
 {%- elif conf.field.inputType == "select" %}
     <select
             name="{{ conf.field.name }}"
+            {% if conf.field.isMultiSelect %}multiple{% endif %}
             class="form-select {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
             {{ conf.field.inputAttr }}
     >
-
+        {% for option in conf.options %}
+            <option value="{{ option.value }}"
+                    {% if option.selected %}selected{% endif %}
+            >{{ option.label }}</option>
+        {% endfor %}
     </select>
 {% else %}
     <input

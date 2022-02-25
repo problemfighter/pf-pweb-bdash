@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from marshmallow import fields
 from pf_flask_rest.form.pf_app_form_def import FormAppDef
+from pf_flask_rest_com.common.pffrc_enum_helper import BaseEnum, EnumField
 
 url_prefix = "/bdash-example"
 bdash_example_blueprint = Blueprint(
@@ -9,6 +10,11 @@ bdash_example_blueprint = Blueprint(
     static_url_path="bdash-example",
     static_folder="bdash-example-static",
 )
+
+
+class GenderEnum(BaseEnum):
+    Brother = "B"
+    Sister = "S"
 
 
 class PersonForm(FormAppDef):
@@ -25,6 +31,7 @@ class PersonForm(FormAppDef):
 
     password = fields.String(required=True, error_messages={"required": "Please enter password"}, type="password")
     description = fields.String(required=True, error_messages={"required": "Please enter description"}, type="textarea")
+    gender = EnumField(GenderEnum, required=True, error_messages={"required": "Please enter gender"})
 
 
 @bdash_example_blueprint.route("/")

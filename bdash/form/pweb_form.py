@@ -38,6 +38,8 @@ class PWebForm:
                 field.inputType = "number"
             elif data_type == "Email":
                 field.inputType = "email"
+            elif data_type == "EnumField":
+                field.inputType = "select"
             else:
                 field.inputType = "text"
 
@@ -45,6 +47,16 @@ class PWebForm:
 
     def _get_select_options(self, field: FieldData):
         options = []
+        for item in field.selectOptions:
+            option = {
+                "label": field.selectOptions[item],
+                "value": item,
+            }
+            if field.value and field.value == item:
+                option['selected'] = True
+            elif field.default and field.default == item:
+                option['selected'] = True
+            options.append(option)
         return options
 
     def show_input(self, field: FieldData, wrapper=True, **kwargs):
