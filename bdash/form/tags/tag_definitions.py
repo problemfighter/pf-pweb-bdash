@@ -36,3 +36,10 @@ class Pagination(StandaloneTag):
 
     def render(self, current_page: int, total_page: int, *args, **kwargs):
         return pweb_table.pagination(current_page, total_page, **kwargs)
+
+
+class SearchNameValue(StandaloneTag):
+    tags = {"search_name_value"}
+
+    def render(self, *args, **kwargs):
+        return pweb_table.search_name_value()

@@ -11,4 +11,5 @@ extensions = [
     "bdash.form.tags.tag_definitions.AddErrorClass",
     "bdash.form.tags.tag_definitions.SortableHeader",
     "bdash.form.tags.tag_definitions.Pagination",
+    "bdash.form.tags.tag_definitions.SearchNameValue",
 ]
