@@ -10,7 +10,19 @@
 <body>
 
 <div class="contain p-5">
-    <h1 class="mb-2">Registration Form</h1>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div>
+            <form>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-secondary sm-res-btn" type="submit">Search</button>
+                    <a href="create-form.html" class="btn btn-primary sm-res-btn">Create</a>
+                    <a href="#" class="btn btn-danger sm-res-btn">Reload</a>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="amin-table">
     <table class="table table-bordered">
         <thead class="table-dark">
@@ -103,31 +115,8 @@
         </tbody>
     </table>
     </div>
-    <div class="justify-content-end">
-    <div class="row justify-content-end">
-        <div class="col-auto">
-            <select class="form-select form-select-sm">
-                <option selected value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-        </div>
-        <div class="col-auto">
-            <nav>
-                <ul class="pagination pagination-sm">
-                    <li class="page-item pagination-selector">
-                        <a class="page-link pagination-link bg-secondary text-white" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-                    </li>
-                    <li class="page-item border-0 active"><a class="page-link pagination-link" href="#">1</a></li>
-                    <li class="page-item "><a class="page-link pagination-link" href="#">2</a></li>
-                    <li class="page-item "><a class="page-link pagination-link" href="#">3</a></li>
-                    <li class="page-item pagination-selector"><a class="page-link bg-secondary text-white pagination-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    </div>
+
+    {% pagination current_page=50, total_page=200 %}
 
 </div>
 </body>

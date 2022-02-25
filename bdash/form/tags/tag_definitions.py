@@ -29,3 +29,10 @@ class SortableHeader(StandaloneTag):
 
     def render(self, name, *args, **kwargs):
         return pweb_table.sortable_header(name, **kwargs)
+
+
+class Pagination(StandaloneTag):
+    tags = {"pagination"}
+
+    def render(self, current_page: int, total_page: int, *args, **kwargs):
+        return pweb_table.pagination(current_page, total_page, **kwargs)
