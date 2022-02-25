@@ -91,6 +91,9 @@ class PWebTable:
             "prev": "",
             "pages": self._prepare_pagination_link(current_page, total_page),
             "next": "",
+            "item_per_page_name": PFFRConfig.item_per_page_param,
+            "item_per_page_options": [25, 50, 100, 200, 500],
+            "item_per_page_selected": self.request_helper.get_query_params_value(PFFRConfig.item_per_page_param, PFFRConfig.total_item_per_page),
         }
         return render_template_string(template, conf=data)
 

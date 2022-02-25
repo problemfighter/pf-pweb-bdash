@@ -1,11 +1,12 @@
 <div class="row justify-content-end">
     <div class="col-auto">
         <form>
-            <select class="form-select">
-                <option selected value="10">10</option>
-                <option value="20"></option>
-                <option value="50">50</option>
-                <option value="100">100</option>
+            <select class="form-select" name="{{ conf.item_per_page_name }}" onchange="this.form.submit()">
+                {% for item in conf.item_per_page_options %}
+                    <option value="{{ item }}" {% if conf.item_per_page_selected == item|string %}selected{% endif %}>
+                        {{ item }}
+                    </option>
+                {% endfor %}
             </select>
         </form>
     </div>
