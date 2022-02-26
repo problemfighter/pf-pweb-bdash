@@ -98,8 +98,10 @@ class PWebTable:
         return render_template_string(template, conf=data)
 
     def search_name_value(self):
-        return "name='" + PFFRConfig.search_field_param + "' value='" + self.request_helper.get_query_params_value(
-            PFFRConfig.search_field_param, '') + "'"
+        value = self.request_helper.get_query_params_value(PFFRConfig.search_field_param, "#")
+        if not value or value == "#":
+            value = ""
+        return "name='" + PFFRConfig.search_field_param + "' value='" + value + "'"
 
 
 pweb_table = PWebTable()

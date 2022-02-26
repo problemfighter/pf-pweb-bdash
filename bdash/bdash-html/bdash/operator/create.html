@@ -1,3 +1,27 @@
+{% extends "bdash/layout/base-layout.html" %}
+{% block title %}Operator List{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Create Operator</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="row g-3" method="post" action="{{ url_for('bdash_operator.create') }}">
+                {% include 'bdash/operator/form.html' %}
+
+                <div class="col-md-12 float-end">
+                    <span class="float-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{{ url_for('bdash_operator.list') }}" class="btn btn-danger">Cancel</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
 
 
-{% show_input field=form.firstName, class='class' %}

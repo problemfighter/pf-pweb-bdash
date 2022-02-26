@@ -9,7 +9,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search">
                             <button class="btn btn-secondary sm-res-btn" type="submit">Search</button>
-                            <a href="create-form.html" class="btn btn-primary sm-res-btn">Create</a>
+                            <a href="{{ url_for('bdash_operator.create') }}" class="btn btn-primary sm-res-btn">Create</a>
                             <a href="#" class="btn btn-danger sm-res-btn">Reload</a>
                         </div>
                     </form>
@@ -20,92 +20,28 @@
                 <table class="table table-bordered">
                     <thead class="table-dark">
                     <tr>
-                        <th># SL</th>
-                        <th><a href="#" class="text-white text-decoration-none"><i class="fas fa-sort me-2 d-inline-flex"></i>Header</a></th>
-                        <th><a href="#" class="text-white text-decoration-none"><i class="fas fa-sort-down me-2"></i>Header</a>
-                        </th>
-                        <th><i class="fas fa-sort-up me-2"></i>Header</th>
-                        <th>Header</th>
+                        {% sortable_header name="firstName" %}
+                        {% sortable_header name="lastName" %}
+                        {% if identifier == "email" %}
+                            {% sortable_header name="email" %}
+                        {% else %}
+                            {% sortable_header name="username" %}
+                        {% endif %}
                         <th class="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Bangladesh</td>
-                        <td>Bang</td>
-                        <td>Chitagong</td>
-                        <td>sit</td>
-                        <td class="text-center">
-                            <div class="dropdown">
-                                <a class="btn-sm" data-bs-toggle="dropdown">
-                                    <i class="fas fa-ellipsis-v text-dark"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1,002</td>
-                        <td>amet</td>
-                        <td>consectetur</td>
-                        <td>adipiscing</td>
-                        <td>elit</td>
-                        <td class="text-center">
-                            <div class="dropdown">
-                                <a class="btn-sm" data-bs-toggle="dropdown">
-                                    <i class="fas fa-ellipsis-v text-dark"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1,003</td>
-                        <td>Integer</td>
-                        <td>nec</td>
-                        <td>odio</td>
-                        <td>Praesent</td>
-                        <td class="text-center">
-                            <div class="dropdown">
-                                <a class="btn-sm" data-bs-toggle="dropdown">
-                                    <i class="fas fa-ellipsis-v text-dark"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1,003</td>
-                        <td>libero</td>
-                        <td>Sed</td>
-                        <td>cursus</td>
-                        <td>ante</td>
-                        <td class="text-center">
-                            <div class="dropdown">
-                                <a class="btn-sm" data-bs-toggle="dropdown">
-                                    <i class="fas fa-ellipsis-v text-dark"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="details-view.html" class="dropdown-item text-left"><i class="fas fa-binoculars me-2"></i>View</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-pen-nib me-2"></i>Edit</a></li>
-                                    <li><a href="#" class="dropdown-item text-left"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                        {% for operator in data.items %}
+                            <tr>
+                                <td>{{ operator.firstName|default("", True) }}</td>
+                                <td>{{ operator.lastName|default("", True) }}</td>
+                                {% if identifier == "email" %}
+                                    <td>{{ operator.email }}</td>
+                                {% else %}
+                                    <td>{{ operator.username }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

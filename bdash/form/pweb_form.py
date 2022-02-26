@@ -48,11 +48,19 @@ class PWebForm:
             options.append(option)
         return options
 
+    def _process_override(self, field: FieldData, **kwargs):
+        if "label" in kwargs:
+            field.label = kwargs.get("label")
+        if "type" in kwargs:
+            field.inputType = kwargs.get("type")
+        return field
+
     def show_input(self, field: FieldData, wrapper=True, **kwargs):
         template = self.pweb_form_common.get_template("text-input")
         field = self._process_field_data(field)
         wrapper_klass = self._get_wrapper_class(field.topAttrClass, **kwargs)
         options = self._get_select_options(field)
+        field = self._process_override(field, **kwargs)
         data = {
             "wrapperKlass": wrapper_klass,
             "wrapper": wrapper,

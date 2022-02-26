@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from bdash.operator.dto.operator_form import OperatorForm
+from bdash.operator.service.bdash_operator_service import BDashOperatorService
+from pf_flask_auth.common.pffa_auth_config import PFFAuthConfig
 
 url_prefix = "/operator"
 operator_controller = Blueprint(
@@ -9,15 +11,22 @@ operator_controller = Blueprint(
     static_folder="../../bdash-static",
 )
 
+bdash_operator_service = BDashOperatorService()
 
 @operator_controller.route("/")
 @operator_controller.route("/list")
 def list():
-    data_list = []
-    return render_template("bdash/operator/list.html", data_list=data_list)
+    return render_template("bdash/operator/list.html", data=bdash_operator_service.list(), identifier=PFFAuthConfig.loginIdentifier)
 
 
 @operator_controller.route("/create", methods=['POST', 'GET'])
 def create():
     form = OperatorForm()
-    return render_template("bdash/operator/create.html", form=form.definition)
+    if form.is_post_request() and form.is_valid_data():
+        response = bdash_operator_service.create(form)
+        if response:
+            return redirect(url_for("bdash_operator.list"))
+    data = {
+        "identifier": PFFAuthConfig.loginIdentifier,
+    }
+    return render_template("bdash/operator/create.html", form=form.definition, data=data)
