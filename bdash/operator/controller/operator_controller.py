@@ -50,6 +50,7 @@ def update(id: int):
         if not model:
             return redirect(url_for("bdash_operator.list"))
         form.set_model_data(model)
+        form.init_identifier(model)
     data = {
         "identifier": PFFAuthConfig.loginIdentifier,
     }

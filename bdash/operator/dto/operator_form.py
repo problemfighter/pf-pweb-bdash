@@ -10,5 +10,9 @@ class OperatorForm(PFFAuthConfig.customOperatorDTO):
 class OperatorUpdateForm(PFFAuthConfig.customOperatorDTO):
     identifier = fields.String(required=True, error_messages={"required": "Please enter identifier."})
 
-
-
+    def init_identifier(self, model):
+        identifier = PFFAuthConfig.loginIdentifier
+        if identifier == "email":
+            self.definition.identifier.value = model.email
+        else:
+            self.definition.identifier.value = model.username

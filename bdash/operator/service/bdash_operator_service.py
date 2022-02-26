@@ -47,11 +47,13 @@ class BDashOperatorService:
         if identifier == "email":
             email_exist = self.operator_service.get_operator_by_email(form.identifier)
             form.definition.email.value = form.identifier
+            form.definition.username.value = None
             if email_exist and model_id != email_exist.id:
                 is_valid = False
                 form.definition.set_field_errors({"identifier": "Email already exist."})
         else:
             form.definition.username.value = form.identifier
+            form.definition.email.value = None
 
         if is_valid:
             existing_model = self.get_crud_helper().form_details(model_id)
