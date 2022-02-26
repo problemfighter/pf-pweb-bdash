@@ -83,8 +83,7 @@ class PWebTable:
         return pagination_details
 
     def pagination(self, current_page: int, total_page: int, **kwargs):
-        per_page = PFFRConfig.total_item_per_page
-        if total_page < per_page:
+        if total_page <= 1:
             return ""
         template = self.pweb_form_common.get_template("pagination")
         data = {
