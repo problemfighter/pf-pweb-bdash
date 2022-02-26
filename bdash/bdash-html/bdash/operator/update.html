@@ -3,4 +3,39 @@
 
 {% block content %}
 
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Update Operator</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="row g-3" method="post" action="{{ url_for('bdash_operator.update', id=id) }}">
+                {% if form.firstName %}
+                    {% show_input field=form.firstName, class="col-12" %}
+                {% endif %}
+
+                {% if form.lastName %}
+                    {% show_input field=form.lastName, class="col-12" %}
+                {% endif %}
+
+                {% if form.identifier %}
+                    {% if data.identifier == "email" %}
+                        {% show_input field=form.identifier, class="col-12", label="Email", type="email" %}
+                    {% else %}
+                        {% show_input field=form.identifier, class="col-12", label="Username" %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="col-md-12 float-end">
+                    <span class="float-end">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="{{ url_for('bdash_operator.list') }}" class="btn btn-danger">Cancel</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
+
+

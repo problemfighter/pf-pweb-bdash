@@ -6,3 +6,9 @@ class OperatorForm(PFFAuthConfig.customOperatorDTO):
     identifier = fields.String(required=True, error_messages={"required": "Please enter identifier."})
     password = fields.String(required=True, error_messages={"required": "Please enter password."}, type="password")
 
+
+class OperatorUpdateForm(PFFAuthConfig.customOperatorDTO):
+    identifier = fields.String(required=True, error_messages={"required": "Please enter identifier."})
+
+
+

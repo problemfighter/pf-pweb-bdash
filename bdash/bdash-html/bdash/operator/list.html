@@ -7,10 +7,10 @@
         <div>
             <form>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" {% search_name_value() %} class="form-control" placeholder="Search">
                     <button class="btn btn-secondary sm-res-btn" type="submit">Search</button>
                     <a href="{{ url_for('bdash_operator.create') }}" class="btn btn-primary sm-res-btn">Create</a>
-                    <a href="#" class="btn btn-danger sm-res-btn">Reload</a>
+                    <a href="{{ url_for('bdash_operator.list') }}" class="btn btn-danger sm-res-btn">Reload</a>
                 </div>
             </form>
         </div>
@@ -39,6 +39,30 @@
                     {% else %}
                         <td>{{ operator.username }}</td>
                     {% endif %}
+                    <td class="text-center">
+                        <div class="dropdown">
+                            <a class="btn-sm" data-bs-toggle="dropdown">
+                                <i class="fas fa-ellipsis-v text-dark"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ url_for('bdash_operator.update', id=operator.id) }}" class="dropdown-item text-left">
+                                        <i class="fas fa-pen-nib me-2"></i>Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url_for('bdash_operator.update', id=operator.id) }}" class="dropdown-item text-left">
+                                        <i class="fas fa-pen-nib me-2"></i>Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url_for('bdash_operator.delete', id=operator.id) }}" class="dropdown-item text-left">
+                                        <i class="fas fa-trash-alt me-2"></i>Delete
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
