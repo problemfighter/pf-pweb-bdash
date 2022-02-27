@@ -22,3 +22,7 @@ class PwebJinjaBasicConfig:
         except:
             pass
         return name
+
+    @staticmethod
+    def current_session():
+        return FormAuthData.ins().get_logged_in_session()
