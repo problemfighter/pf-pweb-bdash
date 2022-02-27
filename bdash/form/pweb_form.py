@@ -21,6 +21,9 @@ class PWebForm:
         if field.default and (field.value == "" or not field.value):
             field.value = field.default
 
+        if not field.value:
+            field.value = ""
+
         if not field.inputType and field.dataType:
             data_type = field.dataType
             if data_type == "Integer" or data_type == "Float" or data_type == "Decimal":
