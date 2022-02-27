@@ -18,7 +18,7 @@ class PwebJinjaBasicConfig:
             if form_auth_data.firstName:
                 name = form_auth_data.firstName
             if form_auth_data.lastName:
-                name = " " + form_auth_data.lastName
+                name += " " + form_auth_data.lastName
         except:
             pass
         return name
