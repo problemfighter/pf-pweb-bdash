@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for
 from bdash.operator.dto.operator_form import OperatorForm, OperatorUpdateForm
 from bdash.operator.service.bdash_operator_service import BDashOperatorService
 from pf_flask_auth.common.pffa_auth_config import PFFAuthConfig
+from pf_flask_auth.dto.operator_dto import ChangePasswordDTO
 
 url_prefix = "/operator"
 operator_controller = Blueprint(
@@ -17,6 +18,15 @@ bdash_operator_service = BDashOperatorService()
 @operator_controller.route("/list")
 def list():
     return render_template("bdash/operator/list.html", data=bdash_operator_service.list(), identifier=PFFAuthConfig.loginIdentifier)
+
+
+@operator_controller.route("/reset-password/<int:id>", methods=['POST', 'GET'])
+def reset_password(id: int):
+    form = ChangePasswordDTO()
+    if form.is_post_request() and form.is_valid_data():
+        if bdash_operator_service.reset_password(form, id):
+            return redirect(url_for("bdash_operator.list"))
+    return render_template("bdash/operator/reset-password.html", form=form.definition, id=id)
 
 
 @operator_controller.route("/create", methods=['POST', 'GET'])

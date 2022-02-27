@@ -18,8 +18,14 @@ class BDashOperatorService:
     def delete(self, model_id):
         return self.get_crud_helper().form_delete(model_id)
 
-    def create2(self, form):
-        pass
+    def reset_password(self, form, model_id):
+        operator = self.operator_service.get_operator_by_id(model_id)
+        if not operator:
+            form.definition.set_field_errors({"confirmPassword": "Invalid operator"})
+            return False
+        operator.password = form.confirmPassword
+        operator.save()
+        return True
 
     def create(self, form):
         identifier = PFFAuthConfig.loginIdentifier
