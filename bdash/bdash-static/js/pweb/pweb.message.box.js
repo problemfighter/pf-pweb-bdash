@@ -1,4 +1,4 @@
-PF.messageBox = (function () {
+PWeb.messageBox = (function () {
     let messageHtml = '<div style="min-height:50px; min-width: 300px; max-width: 600px; position: fixed; top: 0; left: 0; right: 0; margin: 0 auto; text-align: center; z-index: 2000;" class="alert">';
     messageHtml += '<span class="message" style="font-weight: bold;"></span></div>';
     let timeOut = null;

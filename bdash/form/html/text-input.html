@@ -19,10 +19,12 @@
             {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
             class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
             {{ conf.field.inputAttr }}
+            {% if conf.field.required %}required{% endif %}
     >{{ conf.field.value }}</textarea>
 {%- elif conf.field.inputType == "select" %}
     <select
             name="{{ conf.field.name }}"
+            {% if conf.field.required %}required{% endif %}
             {% if conf.field.isMultiSelect %}multiple{% endif %}
             class="form-select {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
             {{ conf.field.inputAttr }}
@@ -39,6 +41,7 @@
             name="{{ conf.field.name }}"
             value="{{ conf.field.value }}"
             {% if conf.field.placeholder %}placeholder="{{ conf.field.placeholder }}"{% endif %}
+            {% if conf.field.required %}required{% endif %}
 
             class="form-control {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
             {{ conf.field.inputAttr }}
