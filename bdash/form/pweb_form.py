@@ -44,7 +44,7 @@ class PWebForm:
                 "label": field.selectOptions[item],
                 "value": item,
             }
-            if field.value and field.value == item:
+            if field.value and str(field.value) == item:
                 option['selected'] = True
             elif field.default and field.default == item:
                 option['selected'] = True
