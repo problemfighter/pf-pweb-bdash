@@ -81,8 +81,8 @@ class PWebForm:
 
     def add_error_class(self, field: FieldData):
         if field.has_error:
-            return
-        return "is-invalid"
+            return "is-invalid"
+        return ""
 
 
 pweb_form = PWebForm()
