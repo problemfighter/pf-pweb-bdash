@@ -1,20 +1,8 @@
 
-{% if form.firstName %}
-    {% show_input field=form.firstName, class="col-6"%}
-{% endif %}
-
-{% if form.lastName %}
-    {% show_input field=form.lastName, class="col-6"%}
-{% endif %}
-
-{% if form.identifier %}
-    {% if data.identifier == "email" %}
-        {% show_input field=form.identifier, class="col-6", label="Email", type="email" %}
+{% for field in form %}
+    {% if field.type %}
+        {% show_input field=field.field, class=field.class, type=field.type, label=field.label %}
     {% else %}
-        {% show_input field=form.identifier, class="col-6", label="Username" %}
+        {% show_input field=field.field, class=field.class %}
     {% endif %}
-{% endif %}
-
-{% if form.password %}
-    {% show_input field=form.password, class="col-6"%}
-{% endif %}
+{% endfor %}

@@ -1,5 +1,5 @@
 {% extends "bdash/layout/base-layout.html" %}
-{% block title %}Operator List{% endblock %}
+{% block title %}Update Operator{% endblock %}
 
 {% block content %}
 
@@ -10,22 +10,7 @@
     <div class="card">
         <div class="card-body">
             <form class="row g-3" method="post" action="{{ url_for('bdash_operator.update', id=id) }}">
-                {% if form.firstName %}
-                    {% show_input field=form.firstName, class="col-12" %}
-                {% endif %}
-
-                {% if form.lastName %}
-                    {% show_input field=form.lastName, class="col-12" %}
-                {% endif %}
-
-                {% if form.identifier %}
-                    {% if data.identifier == "email" %}
-                        {% show_input field=form.identifier, class="col-12", label="Email", type="email" %}
-                    {% else %}
-                        {% show_input field=form.identifier, class="col-12", label="Username" %}
-                    {% endif %}
-                {% endif %}
-
+                {% include 'bdash/operator/form.html' %}
                 <div class="col-md-12 float-end">
                     <span class="float-end">
                         <button type="submit" class="btn btn-primary">Update</button>

@@ -26,10 +26,12 @@ def create():
         response = bdash_operator_service.create(form)
         if response:
             return redirect(url_for("bdash_operator.list"))
+    form_fields = bdash_operator_service.create_update_fields(form)
     data = {
         "identifier": PFFAuthConfig.loginIdentifier,
+        "additional_fields": PFFAuthConfig.operatorAdditionalFields,
     }
-    return render_template("bdash/operator/create.html", form=form.definition, data=data)
+    return render_template("bdash/operator/create.html", form=form_fields, data=data)
 
 
 @operator_controller.route("/delete/<int:id>", methods=['GET'])
@@ -50,8 +52,6 @@ def update(id: int):
         if not model:
             return redirect(url_for("bdash_operator.list"))
         form.set_model_data(model)
-        form.init_identifier(model)
-    data = {
-        "identifier": PFFAuthConfig.loginIdentifier,
-    }
-    return render_template("bdash/operator/update.html", form=form.definition, data=data, id=id)
+
+    form_fields = bdash_operator_service.create_update_fields(form, is_create=False)
+    return render_template("bdash/operator/update.html", form=form_fields, id=id)
