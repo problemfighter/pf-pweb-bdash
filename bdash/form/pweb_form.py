@@ -64,6 +64,14 @@ class PWebForm:
             field.inputType = kwargs.get("type")
         return field
 
+    def _process_various_attrs(self, field: FieldData, **kwargs):
+        ignore = ["class", "type", "label", "option_html"]
+        for key, value in kwargs.items():
+            if key in ignore:
+                continue
+            field.attributes += f"""{key}={value}"""
+        return field
+
     def show_input(self, field: FieldData, wrapper=True, **kwargs):
         template = self.pweb_form_common.get_template("text-input")
         field = self._process_field_data(field)
@@ -71,6 +79,7 @@ class PWebForm:
         options = self._get_select_options(field)
         option_html = self._get_select_option_html(options, **kwargs)
         field = self._process_override(field, **kwargs)
+        field = self._process_various_attrs(field, **kwargs)
         data = {
             "wrapperKlass": wrapper_klass,
             "wrapper": wrapper,
