@@ -37,6 +37,12 @@ class PWebForm:
 
         return field
 
+    def _get_select_option_html(self, options, **kwargs):
+        option_html = kwargs.get("option_html")
+        if not options and option_html:
+            return option_html
+        return ""
+
     def _get_select_options(self, field: FieldData):
         options = []
         for item in field.selectOptions:
@@ -63,12 +69,14 @@ class PWebForm:
         field = self._process_field_data(field)
         wrapper_klass = self._get_wrapper_class(field.topAttrClass, **kwargs)
         options = self._get_select_options(field)
+        option_html = self._get_select_option_html(options, **kwargs)
         field = self._process_override(field, **kwargs)
         data = {
             "wrapperKlass": wrapper_klass,
             "wrapper": wrapper,
             "field": field,
             "options": options,
+            "option_html": option_html,
         }
         return render_template_string(template, conf=data)
 
