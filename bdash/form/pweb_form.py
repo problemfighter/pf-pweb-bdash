@@ -46,8 +46,11 @@ class PWebForm:
     def _get_select_options(self, field: FieldData):
         options = []
         for item in field.selectOptions:
+            label = field.selectOptions[item]
+            if field.selectOptionLabel == "value":
+                label = item
             option = {
-                "label": field.selectOptions[item],
+                "label": label,
                 "value": item,
             }
             if field.value and str(field.value) == item:
