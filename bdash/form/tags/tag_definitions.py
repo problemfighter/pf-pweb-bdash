@@ -24,6 +24,13 @@ class AddErrorClass(StandaloneTag):
         return pweb_form.add_error_class(field, **kwargs)
 
 
+class FormSelect(StandaloneTag):
+    tags = {"form_select"}
+
+    def render(self, name, options: list, *args, **kwargs):
+        return pweb_form.form_select(name, options, **kwargs)
+
+
 class SortableHeader(StandaloneTag):
     tags = {"sortable_header"}
 
