@@ -104,5 +104,29 @@ class PWebForm:
             return "is-invalid"
         return ""
 
+    def form_select(self, name, options: list, **kwargs):
+        option_html = ""
+        value = kwargs.get("value")
+        klass = kwargs.get("class")
+        attr_id = kwargs.get("id")
+        parent_attr = kwargs.get("attr")
+        if options:
+            for option in options:
+                attr = ""
+                selected = ""
+                if "attr" in option:
+                    attr = option["attr"]
+                option_value = option["value"]
+                if value and value == option_value:
+                    selected = "selected"
+                option_html += f"""<option {selected} {attr} value="{option_value}">{option["label"]}</option>"""
+        select_attr = ""
+        if parent_attr:
+            select_attr += parent_attr
+        if attr_id:
+            select_attr += f""" id="{attr_id}" """
+        select_html = f"""<select class="form-select {klass}" name="{name}" {select_attr}>{option_html}</select>"""
+        return select_html
+
 
 pweb_form = PWebForm()
