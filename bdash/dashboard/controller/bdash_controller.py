@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-url_prefix = "/"
+url_prefix = "/bdash"
 bdash_controller = Blueprint(
     "bdash", __name__, url_prefix=url_prefix,
     template_folder="../../bdash-html",
