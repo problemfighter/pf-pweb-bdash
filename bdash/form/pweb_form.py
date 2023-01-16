@@ -53,9 +53,9 @@ class PWebForm:
                 "label": label,
                 "value": item,
             }
-            if field.value and str(field.value) == item:
+            if field.value and str(field.value) == str(item):
                 option['selected'] = True
-            elif field.default and field.default == item:
+            elif field.default and str(field.default) == str(item):
                 option['selected'] = True
             options.append(option)
         return options
