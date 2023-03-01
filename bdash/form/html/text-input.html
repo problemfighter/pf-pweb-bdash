@@ -31,6 +31,9 @@
             class="form-select {{ conf.field.inputAttrClass }} {{ conf.field.has_error and 'is-invalid' }}"
             {{ conf.field.inputAttr }}
     >
+        {% if conf.selectFirstEntry and not conf.field.value %}
+            <option disabled value="" selected>{{- conf.selectFirstEntry }}</option>
+        {% endif %}
         {% for option in conf.options %}
             <option value="{{ option.value }}"
                     {% if option.selected %}selected{% endif %}
