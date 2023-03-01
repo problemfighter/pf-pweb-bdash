@@ -87,6 +87,7 @@ class PWebForm:
             "wrapperKlass": wrapper_klass,
             "wrapper": wrapper,
             "field": field,
+            "selectFirstEntry": field.selectFirstEntry,
             "options": options,
             "option_html": option_html,
         }
